@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FORM</title>
+    <!-- Neo둥근모 Pro -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/neodgm/neodgm-pro-webfont@1.020/neodgm_pro/style.css">
+    <link href="https://cdn.jsdelivr.net/gh/wan2land/d2coding/d2coding-full.css" rel="stylesheet" />
+    <style>
+        #main-text fieldset{
+            padding-left: 20px;
+            border: 0;
+        }
+        #meta-info fieldset{
+            padding-left: 20px;
+            border: 0;
+        }
+        form div div{
+            display: block;
+            margin-bottom: 10px;
+        }
+        .fw-option-lst {
+            display: flex;
+        }
+        .fw-option-lst input{
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+        .fw-option-bold{
+            font-weight: bold;
+        }
+        .fw-option-normal{
+            font-weight: normal;
+        }
+        .fw-option-light{
+            font-weight: lighter;
+        }
+        .ha-extra{
+            display: none;
+            color: #999;
+            font-size: small;
+        }
+        #font-option-dgm{
+            font-family: 'NeoDunggeunmo Pro';
+            font-size: 16px;
+        }
+        #font-option-ari{
+            font-family: Arial;
+        }
+        #font-option-d2c{
+            font-family: 'D2Coding';
+        }
+        #font-option-ver{
+            font-family: Verdana;
+        }
+        .divider{
+            margin-bottom: 20px;
+            margin-top: 20px;
+            border: 0;
+            border-top: 1px solid;
+            opacity: .25;
+        }
+        textarea{
+            width: 300px;
+            height: 100px;
+            resize: none;
+            border-radius: 20px;
+            padding: 10px 10px;
+            border: 1px solid rgba(100,100,100,40%);
+        }
+        input,select{
+            border-radius: 20px;
+            border: 1px solid rgba(100,100,100,40%);
+            padding: 2px 10px;
+        }
+        label{
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+        input[type="submit"]{
+            background-color: #eee;
+        }
+    </style>
+    <script>
+        function update(){
+            let opt = document.getElementById("ha-option").value;
+            document.getElementById("ha-extra-2").style.display = "none";
+            document.getElementById("ha-extra-4").style.display = "none";
+            if(opt==="2"){
+                document.getElementById("ha-extra-2").style.display = "block";
+            }else if(opt==="4"){
+                document.getElementById("ha-extra-4").style.display = "block";
+            }
+        }
+    </script>
+</head>
+<body>
+<form action="form_ok.jsp" method="post">
+    <div id="main-text">
+        <h1>Text Decorator</h1>
+        <hr class="divider">
+        <h3>Main text</h3>
+        <fieldset>
+            <div class="text">
+                <label>Display Text</label><br>
+                <input type="text" name="text">
+            </div>
+            <div class="color">
+                <label>Text color</label><br>
+                <input type="color" name="color">
+            </div>
+            <div class="fw-option-lst">
+                <label>Font Weight: </label>
+                <input type="radio" name="weight" value="lighter"><div class="fw-option fw-option-light">light</div>
+                <input type="radio" name="weight" value="normal"><div class="fw-option fw-option-normal">normal</div>
+                <input type="radio" name="weight" value="bolder"><div class="fw-option fw-option-bold">bold</div>
+            </div>
+            <div>
+                <label>Text Decoration:</label><br>
+                <input type="checkbox" name="italic">italic
+                <input type="checkbox" name="through">line through
+                <input type="checkbox" name="underline">underline
+            </div>
+            <div id="ha-group">
+                <div>
+                    <label>Hover Action:</label><br>
+                    <select name="hover-action" id="ha-option" onchange="update()">
+                        <optgroup label="None">
+                            <option value="0">none</option>
+                        </optgroup>
+                        <optgroup label="Text Action">
+                            <option value="1">emphasize text</option>
+                            <option value="2">highlight text</option>
+                            <option value="3">obscure text</option>
+                        </optgroup>
+                        <optgroup label="Miscellaneous">
+                            <option value="4">show message</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div id="ha-extra-2" class="ha-extra">
+                    Highlight Color:
+                    <input type="color" name="ha-extra-2">
+                </div>
+                <div id="ha-extra-4" class="ha-extra">
+                    Hover Text:
+                    <input type="text" name="ha-extra-4">
+                </div>
+            </div>
+            <div>
+                <label>Font:</label><br>
+                <select name="font">
+                    <option value="dgm" id="font-option-dgm">둥근모</option>
+                    <option value="ari" id="font-option-ari">Arial</option>
+                    <option value="d2c" id="font-option-d2c">D2Coding</option>
+                    <option value="ver" id="font-option-ver">Verdana</option>
+                </select>
+            </div>
+        </fieldset>
+    </div>
+    <hr class="divider">
+    <div id="meta-info">
+        <h3>Meta info</h3>
+        <fieldset>
+            <div>
+                <label>Description</label><br>
+                <textarea name="descr"></textarea>
+            </div>
+            <div>
+                <label>Creation date</label><br>
+                <input type="date" name="date" required>
+            </div>
+            <div>
+                <label><h4>Author contact info</h4></label><br>
+                <label>name</label><br>
+                <input type="text" name="name" required><br>
+                <label>email</label><br>
+                <input type="email" name="email" required>
+            </div>
+        </fieldset>
+    </div>
+    <input type="submit">
+</form>
+</body>
+</html>
